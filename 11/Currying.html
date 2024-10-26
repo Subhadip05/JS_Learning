@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currying</title>
+</head>
+<body>
+    <h2>Curring in JS</h2>
+    <h3>Type of nested function,
+         but advantage is every will function will work step by step following his parent function.</h3>
+
+    <script>
+        //Example1
+        // function add(a){
+        //     return function(b) {
+        //         return function(c) {
+        //             return a+b+c;
+        //         }
+        //     }
+        // }
+        
+        //with higher order function
+        const add = (a) => (b)=> (c) => a+b+c;
+        console.log(add(2)(5)(7));
+
+
+        //Example2
+        function sendEmail(to){
+            return function(subject) {
+                return function (body) {
+                    console.log(`Sending email to ${to} for the subject ${subject} : ${body}`);
+                }
+            }
+        }
+
+        let step1 = sendEmail("samantasubhadip158@gmail.com");
+        let step2 = step1("Email Verification Succesful");
+        step2("Succesfully , The email verification is complete,Thank you");
+    </script>
+</body>
+</html>
